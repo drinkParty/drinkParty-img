@@ -7,7 +7,9 @@ const s3Client = new AWS.S3({
 });
 
 exports.handler = async (event, context, callback) => {
-  const { ext, dir } = event;
+  const { queryStringParameters } = event;
+  const ext = queryStringParameters.ext;
+  const dir = queryStringParameters.dir;
   const imageDir = getImageDir(dir);
 
   let today = new Date();
